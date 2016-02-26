@@ -9,8 +9,7 @@ vendor_filelist="/vendor/lib64/libQSEEComAPI.so \
 /vendor/lib64/libdiag.so \
 /vendor/bin/qseecomd"
 # already copied: libcryptfslollipop.so libcrypto.so libc.so libcutils.so libdl.so libhardware.so liblog.so libm.so libstdc++.so libc++.so
-system_filelist="linker64"
-system_lib_filelist="libbacktrace.so libbase.so libnetd_client.so libunwind.so libutils.so"
+system_filelist="libbacktrace.so libbase.so libnetd_client.so libunwind.so libutils.so linker64"
 rm -r multirom_enc_blobs
 for i in $vendor_filelist
 do
@@ -24,14 +23,7 @@ do
 	echo $i
 	outfile="multirom_enc_blobs/$i"
 	mkdir -p `dirname $outfile`
-	adb pull "/system/bin/$i" $outfile
-done
-for i in $system_lib_filelist
-do
-	echo $i
-	outfile="multirom_enc_blobs/$i"
-	mkdir -p `dirname $outfile`
-	adb pull "/system/lib/$i" $outfile
+	adb pull "/sbin/$i" $outfile
 done
 mv multirom_enc_blobs/linker64 multirom_enc_blobs/linker
 mkdir -p multirom_enc_blobs/vendor/lib64/hw
