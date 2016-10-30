@@ -74,11 +74,6 @@ MR_USE_QCOM_OVERLAY := true
 MR_QCOM_OVERLAY_HEADER := device/huawei/angler/multirom/mr_qcom_overlay.h
 MR_QCOM_OVERLAY_CUSTOM_PIXEL_FORMAT := MDP_RGBX_8888
 
-# Exclusions to mkae the recovery iamge fit
-TW_NO_EXFAT := true
-TW_NO_EXFAT_FUSE := true
-TW_EXCLUDE_SUPERSU := true
-
 include device/huawei/angler/MR_REC_VERSION.mk
 
 ifeq ($(MR_REC_VERSION),)
